@@ -11,9 +11,9 @@ func main() {
 
 	//Classroom API stuff
 	srv := helpers.Server()
-	utils.ClassroomInit(srv)
-	go utils.ClassroomStuff(discord, srv)
+	go utils.AnnouncementCheck(discord, srv)
+	go utils.AssignmentCheck(discord, srv)
 
-	// init Bot
+	// Start Bot
 	helpers.DiscordBot(discord)
 }

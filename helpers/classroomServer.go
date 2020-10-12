@@ -21,7 +21,13 @@ func Server() *classroom.Service {
 	}
 
 	// If modifying these scopes, delete your previously saved token.json.
-	config, err := google.ConfigFromJSON(b, classroom.ClassroomCoursesReadonlyScope, classroom.ClassroomAnnouncementsReadonlyScope, classroom.ClassroomRostersReadonlyScope)
+	config, err := google.ConfigFromJSON(b,
+		classroom.ClassroomCoursesReadonlyScope,
+		classroom.ClassroomAnnouncementsReadonlyScope,
+		classroom.ClassroomRostersReadonlyScope,
+		classroom.ClassroomCourseworkStudentsReadonlyScope,
+		classroom.ClassroomCourseworkMeReadonlyScope)
+
 	if err != nil {
 		log.Fatalf("Unable to parse client secret file to config: %v", err)
 	}

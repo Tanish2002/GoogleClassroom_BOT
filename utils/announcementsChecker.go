@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -9,7 +8,20 @@ import (
 	"google.golang.org/api/classroom/v1"
 )
 
-func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
+var (
+	BEE             string
+	YOGA            string
+	SEMI_CONDUCTORS string
+	ENGLISH         string
+	PROFFESIONAL    string
+	EG              string
+	MATHS           string
+	CONSTITUITION   string
+	TEST            string
+	CHANNEL         string = "749951930062733412"
+)
+
+func AnnouncementCheck(s *discordgo.Session, sr *classroom.Service) {
 	r, err := sr.Courses.List().PageSize(100).Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve courses. %v", err)
@@ -29,6 +41,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(YOGA) == 0 {
+								YOGA = a.AlternateLink
+							}
 							if YOGA != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for YOGA CLASS",
@@ -48,6 +63,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(CONSTITUITION) == 0 {
+								CONSTITUITION = a.AlternateLink
+							}
 							if CONSTITUITION != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for CONSTITUITION OF INDIA CLASS",
@@ -68,6 +86,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(BEE) == 0 {
+								BEE = a.AlternateLink
+							}
 							if BEE != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for BEE CLASS",
@@ -88,6 +109,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(PROFFESIONAL) == 0 {
+								PROFFESIONAL = a.AlternateLink
+							}
 							if PROFFESIONAL != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for PROFESSIONAL CLASS",
@@ -108,6 +132,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(ENGLISH) == 0 {
+								ENGLISH = a.AlternateLink
+							}
 							if ENGLISH != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for ENGLISH CLASS",
@@ -128,6 +155,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(EG) == 0 {
+								EG = a.AlternateLink
+							}
 							if EG != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for ENGINEERING GRAPHICS CLASS",
@@ -148,6 +178,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(SEMI_CONDUCTORS) == 0 {
+								SEMI_CONDUCTORS = a.AlternateLink
+							}
 							if SEMI_CONDUCTORS != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for SEMICONDUCTORS CLASS",
@@ -168,6 +201,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(MATHS) == 0 {
+								MATHS = a.AlternateLink
+							}
 							if MATHS != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for MATHS CLASS",
@@ -188,6 +224,9 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 							log.Fatalf("Unable to retrieve Announcements for %s. %v", c.Name, err)
 						}
 						for _, a := range l.Announcements {
+							if len(TEST) == 0 {
+								TEST = a.AlternateLink
+							}
 							if TEST != a.AlternateLink {
 								s.ChannelMessageSendEmbed(CHANNEL, &discordgo.MessageEmbed{
 									Title:       "New Announcement for TEST CLASS",
@@ -205,7 +244,7 @@ func ClassroomStuff(s *discordgo.Session, sr *classroom.Service) {
 				}
 			}
 		} else {
-			fmt.Print("No courses found.")
+			log.Fatalf("No courses found when checking for announcements")
 			return
 		}
 		time.Sleep(10 * time.Second)
