@@ -1,0 +1,45 @@
+#+TITLE: Google Classroom Discord BOT
+*A Discord Bot made in Golang to interact with Google Classroom API*
+
+* Dependencies
++ Golang
++ credentials.json in project root
+
+* Setup With Nix
+#+BEGIN_EXAMPLE
+# Install the Nix package manager:
+curl -L https://nixos.org/nix/install | sh
+
+# Clone this repo
+git clone https://github.com/Tanish2002/GoogleClassroom_BOT.git
+cd GoogleClassroom_BOT
+
+# Enter the dev environment
+nix-shell
+
+# Set environment variables
+cp .env.example .env
+
+# copy credentials
+cp <path-to-credentials.json> credentials.json
+
+go run .
+#+END_EXAMPLE
+
+* Manual Setup
+#+BEGIN_EXAMPLE
+# Install dependencies using your distro's package manager, ex-:
+$ sudo xbps-install -S go
+
+# Clone this repo
+git clone https://github.com/Tanish2002/GoogleClassroom_BOT.git
+cd GoogleClassroom_BOT
+
+# Set and modify environment variables
+cp .env.example .env
+
+# copy credentials
+cp <path-to-credentials.json> credentials.json
+
+go run .
+#+END_EXAMPLE

@@ -2,6 +2,7 @@ package utils
 
 import (
 	"log"
+	"os"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
@@ -18,7 +19,7 @@ var (
 	MATHS           string
 	CONSTITUITION   string
 	TEST            string
-	CHANNEL         string = "749951930062733412"
+	CHANNEL         string = os.Getenv("CHANNEL")
 )
 
 func AnnouncementCheck(s *discordgo.Session, sr *classroom.Service) {
